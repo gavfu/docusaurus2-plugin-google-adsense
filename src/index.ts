@@ -1,4 +1,4 @@
-import { Joi } from '@docusaurus/utils-validation';
+// import { Joi } from '@docusaurus/utils-validation';
 
 import type { LoadContext, Plugin, OptionValidationContext } from '@docusaurus/types';
 import type { PluginOptions, Options } from './options';
@@ -35,15 +35,24 @@ export default function pluginGoogleAdsense(
   };
 }
 
-const pluginOptionsSchema = Joi.object<PluginOptions>({
-  dataAdClient: Joi.string().required()
-});
+// const pluginOptionsSchema = Joi.object<PluginOptions>({
+//   dataAdClient: Joi.string().required()
+// });
 
 export function validateOptions({
   validate,
   options,
 }: OptionValidationContext<Options, PluginOptions>): PluginOptions {
-  return validate(pluginOptionsSchema, options);
+  // return validate(pluginOptionsSchema, options);
+
+  // Not use `Joi` to avoid mixing Joi versions
+  if (!options.dataAdClient) {
+    throw new Error('Missing dataAdClient option');
+  }
+
+  return {
+    dataAdClient: options.dataAdClient!
+  };
 }
 
-export type {PluginOptions, Options};
+export type { PluginOptions, Options };
