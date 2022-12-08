@@ -15,9 +15,9 @@ export default function pluginGoogleAdsense(
     name: 'docusaurus2-plugin-google-adsense',
 
     injectHtmlTags() {
-      if (!isProd) {
-        return {};
-      }
+      // if (!isProd) {
+      //   return {};
+      // }
 
       return {
         headTags: [
@@ -28,6 +28,29 @@ export default function pluginGoogleAdsense(
               src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${dataAdClient}`,
               crossorigin: 'anonymous',
             },
+          },
+          {
+            tagName: 'script',
+            innerHTML: `
+            window.addEventListener("load", () => {
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+
+            function displayGoogleAds() {
+              const placeholders = document.getElementsByClassName('adsbygoogle-ins-placeholder');
+              console.log('placeholders count:', placeholders.length);
+              for (let i = 0; i < placeholders.length; i++) {
+                const ins = document.createElement('ins');
+                ins.setAttribute('class', 'adsbygoogle');
+                ins.setAttribute('style', 'display:block; text-align:center;"');
+                ins.setAttribute('data-ad-layout', 'in-article');
+                ins.setAttribute('data-ad-format', 'fluid');
+                ins.setAttribute('data-ad-client', 'ca-pub-${dataAdClient}');
+                ins.setAttribute('data-ad-slot', '4993301259');
+                placeholders[i].parentNode.insertBefore(ins, placeholders[i].nextSibling);
+              }
+            }
+            `,
           },
         ],
       };

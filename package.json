@@ -1,6 +1,6 @@
 {
-  "name": "docusaurus2-plugin-google-adsense",
-  "version": "1.0.0",
+  "name": "docusaurus2-plugin-google-adsense-bk",
+  "version": "1.0.1",
   "description": "Google adsense plugin for Docusaurus 2.",
   "license": "MIT",
   "repository": {
