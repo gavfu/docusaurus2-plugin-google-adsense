@@ -1,0 +1,31 @@
+{
+  "name": "docusaurus2-plugin-google-adsense",
+  "version": "1.0.0",
+  "description": "Google adsense plugin for Docusaurus 2.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gavfu/docusaurus2-plugin-google-adsense"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/types": "^2.2.0",
+    "@docusaurus/utils-validation": "^2.2.0",
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": ">=16.14"
+  }
+}
